@@ -10,6 +10,18 @@
     <% recipe.ingredients.each do |ingredient| %>
     <%= ingredient.name %>
     <% end %>
+    <%= form_with(model: @pizza, local: true) do |form| %>
+
+      <div class="field">
+        <%= form.collection_select(:crust_id, Crust.all,
+                                   :id, :name, {:prompt => 'Select a Crust',
+                                                :selected =>@pizza.crust_id}) %>
+        <%= form.hidden_field :recipe_id, :value => recipe.id %>
+      </div>
+      <div class="field">
+        <%= form.submit %>
+      </div>
+    <% end %>
   </div>
 <% end %>
   </div>
