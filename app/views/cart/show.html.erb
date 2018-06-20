@@ -1,0 +1,16 @@
+<div class="shopping-cart">
+  <% if !@pizza.nil? && @pizza.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @pizza.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @pizzas.size == 0 %>
+    <p class="text-center">
+      There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+    </p>
+  <% end %>
+</div>
